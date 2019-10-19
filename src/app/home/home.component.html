@@ -1,0 +1,23 @@
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-3 m-2 p-4 border">
+      <h3>
+        city name : {{(weatherData | async)?.city?.name}}
+
+      </h3>
+    </div>
+    <div class="col m-2 p-4 border">
+      <div class="row">
+        <div class="col m-1 p-1 border" *ngFor="let weather of (weatherData | async)?.list">
+          <img src="http://openweathermap.org/img/wn/{{weather.weather[0].icon}}@2x.png">
+          <p> {{weather.dt * 1000 | date:'fullDate' }} </p>
+          <p> {{weather.temp.day}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {{weatherData | async | json}}
+
+</div>
